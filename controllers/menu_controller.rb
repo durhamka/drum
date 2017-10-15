@@ -65,24 +65,23 @@ class MenuController
     title = gets.chomp
     print 'BPM (beats per minute): '
     bpm = gets.chomp
-    print_type_of_sound_prompt('first')
-    add_notes(sound_types)
-    print_pattern_prompt('first')
-    add_notes(patterns)
-    print_type_of_sound_prompt('second')
-    add_notes(sound_types)
-    print_pattern_prompt('second')
-    add_notes(patterns)
-    print_type_of_sound_prompt('third')
-    add_notes(sound_types)
-    print_pattern_prompt('third')
-    add_notes(patterns)
+
+    prompts('first', sound_types, patterns)
+    prompts('second', sound_types, patterns)
+    prompts('third', sound_types, patterns)
 
     notes = SongNoteBuilder.new.build(patterns: patterns, sound_types: sound_types)
     song_library.add_song(title, bpm, notes)
 
     system 'clear'
     puts 'New song created!'
+  end
+
+  def prompts(number, sound_types, patterns)
+    print_type_of_sound_prompt(number)
+    add_notes(sound_types)
+    print_pattern_prompt(number)
+    add_notes(patterns)
   end
 
   def print_type_of_sound_prompt(number)
