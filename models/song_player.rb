@@ -1,4 +1,5 @@
 require_relative 'song'
+require 'rainbow'
 
 class SongPlayer
   SECONDS = 60.0
@@ -9,7 +10,7 @@ class SongPlayer
 
   def play
     song_notes.each do |note|
-      print note + "\n"
+      print Rainbow(note + "\n").bright.mediumpurple
       sleep time_between_notes
     end
   end
