@@ -3,12 +3,8 @@ require_relative '../models/song_player'
 require_relative '../models/song_attribute_builder'
 
 class MenuController
-  attr_reader :song_library, :song_player, :song_builder
-
   def initialize
     @song_library = SongLibrary.new
-    @song_player = SongPlayer.new
-    @song_builder = SongBuilder.new
   end
 
   def main_menu
@@ -45,6 +41,7 @@ class MenuController
   end
 
   private
+  attr_reader :song_library
 
   def view_songs
     if song_library.songs.length > 0
@@ -81,7 +78,7 @@ class MenuController
     print_pattern_prompt('third')
     add_attribute(patterns)
 
-    song_attributes = song_builder.build(patterns: patterns, sound_types: sound_types)
+    song_attributes = SongAttributeBuilder.new.build(patterns: patterns, sound_types: sound_types)
     song_library.add_song(title, bpm, song_attributes)
 
     system 'clear'
@@ -102,7 +99,9 @@ class MenuController
 
   def play_last_song
     if song_library.songs.length > 0
-      puts @song_player.play(song_library.songs.last)
+      song = song_library.songs.last
+      puts "Now playing #{song.name} at #{song.bpm} BPM"
+      SongPlayer.new(song).play
     else
       puts 'You have no songs to play.'
     end
