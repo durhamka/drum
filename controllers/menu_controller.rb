@@ -32,6 +32,7 @@ class MenuController
       main_menu
     when 4
       puts 'Good-bye!'
+      puts 'Goodbye! Thanks for making music.'
       exit(0)
     else
       system 'clear'
