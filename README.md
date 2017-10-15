@@ -10,7 +10,7 @@ Follow instructions within the program.
 To run specs, type `rspec`. 
 
 ## Notes:
-This took me about 2.5 hours all together to implement. 
+This took me about 2 hours all together to implement. 
 
 ### What Went Well:
 - Valuing the user input
