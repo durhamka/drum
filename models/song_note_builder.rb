@@ -1,4 +1,4 @@
-class SongAttributeBuilder
+class SongNoteBuilder
   def build(sound_types:, patterns:)
     beat = sound_types.zip(patterns).map do |sound_type, pattern|
       chars = pattern.split('')

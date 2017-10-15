@@ -1,9 +1,27 @@
 require_relative 'song'
-require_relative 'song_attribute_presenter'
 
 class SongPlayer
-  def play(song)
-    presented_song_attributes = SongAttributePresenter.new.present(song.attributes)
-    "Now playing #{song.name} at #{song.bpm} BPM: #{presented_song_attributes}"
+  SECONDS = 60.0
+
+  def initialize(song)
+    @song = song
+  end
+
+  def play
+    song_notes.each do |note|
+      print note + "\n"
+      sleep time_between_notes
+    end
+  end
+
+  private
+  attr_reader :song
+
+  def time_between_notes
+    (SECONDS / song.bpm.to_f) / 2
+  end
+
+  def song_notes
+    song.notes
   end
 end

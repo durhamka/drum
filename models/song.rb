@@ -1,9 +1,9 @@
 class Song
-  attr_accessor :name, :bpm, :attributes
+  attr_accessor :name, :bpm, :notes
 
-  def initialize(name, bpm, attributes)
+  def initialize(name, bpm, notes)
     @name = name
     @bpm = bpm
-    @attributes = attributes
+    @notes = notes
   end
 end

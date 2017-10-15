@@ -1,8 +1,8 @@
-require_relative '../models/song_attribute_builder'
+require_relative '../models/song_note_builder'
 
-RSpec.describe SongAttributeBuilder do
+RSpec.describe SongNoteBuilder do
   describe '#build' do
-    it 'builds the song attributes with the patterns and sound_types' do
+    it 'builds the song notes with the patterns and sound_types' do
       sound_types = %w(kick hitthat snare)
       patterns = %w(xxxx.... ....xxxx x.x.x.x.)
 

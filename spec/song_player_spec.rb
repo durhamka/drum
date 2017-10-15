@@ -2,22 +2,15 @@ require_relative '../models/song_player'
 
 RSpec.describe SongPlayer do
   describe '#play' do
-    let(:song) { double(Song, attributes: '', name: 'Harleigh Song', bpm: 112) }
+    let(:song) { double(Song, notes: %w(hihat . snare), name: 'Harleigh Song', bpm: 60) }
     let(:mock_song_presenter) { double(SongAttributePresenter) }
 
-    before do
-      allow(SongAttributePresenter).to receive(:new).and_return mock_song_presenter
-      allow(mock_song_presenter).to receive(:present).with(song.attributes).and_return('kick|.|kick|.')
-    end
+    subject { described_class.new(song) }
 
-    it 'calls the SongAttributePresenter' do
-      subject.play(song)
-
-      expect(mock_song_presenter).to have_received(:present).with(song.attributes)
-    end
-
-    it 'returns the playing song dialogue' do
-      expect(subject.play(song)).to eq "Now playing Harleigh Song at 112 BPM: kick|.|kick|."
+    describe '#play' do
+      it 'prints out each note in the song with a newline' do
+        expect { subject.play }.to output("hihat\n.\nsnare\n").to_stdout
+      end
     end
   end
 end

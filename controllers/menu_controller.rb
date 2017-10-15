@@ -1,6 +1,6 @@
 require_relative '../models/song_library'
 require_relative '../models/song_player'
-require_relative '../models/song_attribute_builder'
+require_relative '../models/song_note_builder'
 
 class MenuController
   def initialize
@@ -31,7 +31,6 @@ class MenuController
       play_last_song
       main_menu
     when 4
-      puts 'Good-bye!'
       puts 'Goodbye! Thanks for making music.'
       exit(0)
     else
@@ -67,20 +66,20 @@ class MenuController
     print 'BPM (beats per minute): '
     bpm = gets.chomp
     print_type_of_sound_prompt('first')
-    add_attribute(sound_types)
+    add_notes(sound_types)
     print_pattern_prompt('first')
-    add_attribute(patterns)
+    add_notes(patterns)
     print_type_of_sound_prompt('second')
-    add_attribute(sound_types)
+    add_notes(sound_types)
     print_pattern_prompt('second')
-    add_attribute(patterns)
+    add_notes(patterns)
     print_type_of_sound_prompt('third')
-    add_attribute(sound_types)
+    add_notes(sound_types)
     print_pattern_prompt('third')
-    add_attribute(patterns)
+    add_notes(patterns)
 
-    song_attributes = SongAttributeBuilder.new.build(patterns: patterns, sound_types: sound_types)
-    song_library.add_song(title, bpm, song_attributes)
+    notes = SongNoteBuilder.new.build(patterns: patterns, sound_types: sound_types)
+    song_library.add_song(title, bpm, notes)
 
     system 'clear'
     puts 'New song created!'
@@ -94,7 +93,7 @@ class MenuController
     print "Input your #{number} pattern. Needs to be in 4/4 time with 8 steps. Use . for empty steps. (Example: .x..xx.x): "
   end
 
-  def add_attribute(attribute_array)
+  def add_notes(attribute_array)
     attribute_array.push(gets.chomp)
   end
 
