@@ -22,6 +22,7 @@ To run specs, type `rspec`.
 ### What Did Not Go Well:
 - Finding the time to sit down and do it between work, mentoring, & preparing my keynote. I did it in chunks, so it was hard to keep jumping back in. It would have been easier to do it all in one sitting and would have taken less time.
 - It is hard coded to only work with 3 patterns, which is bothering me.
+- The controller could use some more cleaning up and refactoring! 
 
 ### The Future:
 - Add validations. Right now, there are no validations if you enter something wrong. ie.(throwing an error if the user inputs anything other than 8 counts, not one of the available sounds, bpm is invalid)
