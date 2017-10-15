@@ -1,5 +1,5 @@
 require_relative 'controllers/menu_controller'
 
 system 'clear'
-puts "Welcome to Kinsey's SM-808!"
+puts "Let's make some music! 'Without music, life would be a mistake. - Friedrich Nietzsche"
 MenuController.new.main_menu
