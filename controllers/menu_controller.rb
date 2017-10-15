@@ -1,6 +1,6 @@
 require_relative '../models/song_library'
 require_relative '../models/song_player'
-require_relative '../models/song_builder'
+require_relative '../models/song_attribute_builder'
 
 class MenuController
   attr_reader :song_library, :song_player, :song_builder
@@ -89,11 +89,11 @@ class MenuController
   end
 
   def print_type_of_sound_prompt(number)
-    print "Enter the #{number} type of sound (eg. kick, clap): "
+    print "Enter the #{number} type of sound. Please use: kick, clap, hihat, or snare): "
   end
 
   def print_pattern_prompt(number)
-    print "Input your #{number} pattern. Needs to be in 4/4 time with 8 steps. Use . for empty steps. (eg. .x..xx.x): "
+    print "Input your #{number} pattern. Needs to be in 4/4 time with 8 steps. Use . for empty steps. (Example: .x..xx.x): "
   end
 
   def add_attribute(attribute_array)
